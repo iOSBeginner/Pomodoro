@@ -21,7 +21,12 @@ class TimingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        oneTimeUnit = 300
+        let now = Date.init()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH"
+        let hour = Int(dateFormatter.string(from: now))
+        
+        oneTimeUnit = hour! <= 12 ? 90*60 : 25*60;
         remainTime = oneTimeUnit
         
         status = "nothing"
