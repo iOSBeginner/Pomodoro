@@ -139,27 +139,20 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="gje-YN-wTz">
-                                <rect key="frame" x="101" y="546" width="173" height="30"/>
+                                <rect key="frame" x="136.5" y="546" width="102" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPe-gE-BTR">
-                                        <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
-                                        <state key="normal" title="取消"/>
-                                        <connections>
-                                            <action selector="cancelButton:" destination="GF7-61-wEj" eventType="touchUpInside" id="dRM-mb-Dvy"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7o1-bk-vb3">
-                                        <rect key="frame" x="71" y="0.0" width="31" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
                                         <state key="normal" title="開始"/>
                                         <connections>
                                             <action selector="startButton:" destination="GF7-61-wEj" eventType="touchUpInside" id="wJK-dM-MAf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fs2-Rc-r8o">
-                                        <rect key="frame" x="142" y="0.0" width="31" height="30"/>
-                                        <state key="normal" title="完成"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPe-gE-BTR">
+                                        <rect key="frame" x="71" y="0.0" width="31" height="30"/>
+                                        <state key="normal" title="取消"/>
                                         <connections>
-                                            <action selector="finishButton:" destination="GF7-61-wEj" eventType="touchUpInside" id="52Z-Hg-moC"/>
+                                            <action selector="cancelButton:" destination="GF7-61-wEj" eventType="touchUpInside" id="dRM-mb-Dvy"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -202,6 +195,7 @@
                     <connections>
                         <outlet property="minuteLabel" destination="bED-mA-sav" id="tda-NW-8Nb"/>
                         <outlet property="secondLabel" destination="X5E-k9-WyZ" id="WhL-0h-CMp"/>
+                        <outlet property="startButton" destination="7o1-bk-vb3" id="qvf-fQ-YQa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRF-tI-yzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
