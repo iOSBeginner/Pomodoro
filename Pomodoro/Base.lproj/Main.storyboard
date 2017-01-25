@@ -111,69 +111,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1z0-Cd-hSw">
-                                <rect key="frame" x="123" y="65" width="129" height="20.5"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v0m-Q4-c52">
-                                        <rect key="frame" x="0.0" y="0.0" width="129" height="20.5"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drh-WE-Arh">
-                                                <rect key="frame" x="0.0" y="0.0" width="129" height="20.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天完成：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSV-ZQ-sq5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="87" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNG-t1-Fag">
-                                                        <rect key="frame" x="87" y="0.0" width="42" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="gje-YN-wTz">
-                                <rect key="frame" x="136.5" y="546" width="102" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7o1-bk-vb3">
-                                        <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
-                                        <state key="normal" title="開始"/>
-                                        <connections>
-                                            <action selector="startButton:" destination="GF7-61-wEj" eventType="touchUpInside" id="wJK-dM-MAf"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPe-gE-BTR">
-                                        <rect key="frame" x="71" y="0.0" width="31" height="30"/>
-                                        <state key="normal" title="取消"/>
-                                        <connections>
-                                            <action selector="cancelButton:" destination="GF7-61-wEj" eventType="touchUpInside" id="dRM-mb-Dvy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f4q-xp-dID">
-                                <rect key="frame" x="133" y="323.5" width="109" height="20.5"/>
+                                <rect key="frame" x="165" y="323.5" width="46" height="20.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bED-mA-sav">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bED-mA-sav">
+                                        <rect key="frame" x="0.0" y="0.0" width="10.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xes-tR-NJb">
-                                        <rect key="frame" x="52" y="0.0" width="5" height="20.5"/>
+                                        <rect key="frame" x="20.5" y="0.0" width="5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5E-k9-WyZ">
-                                        <rect key="frame" x="67" y="0.0" width="42" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5E-k9-WyZ">
+                                        <rect key="frame" x="35.5" y="0.0" width="10.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7o1-bk-vb3">
+                                <rect key="frame" x="172" y="529" width="31" height="30"/>
+                                <state key="normal" title="開始"/>
+                                <connections>
+                                    <action selector="buttonClick:" destination="GF7-61-wEj" eventType="touchUpInside" id="Pvm-vE-YvP"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3r2-oE-BW2">
+                                <rect key="frame" x="123" y="67" width="129" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天完成：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSV-ZQ-sq5">
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNG-t1-Fag">
+                                        <rect key="frame" x="87" y="0.0" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -184,11 +162,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f4q-xp-dID" firstAttribute="centerX" secondItem="jP3-Kg-42F" secondAttribute="centerX" id="6cc-vJ-dE0"/>
-                            <constraint firstItem="Off-gE-rw2" firstAttribute="top" secondItem="gje-YN-wTz" secondAttribute="bottom" constant="42" id="Dob-b0-f5n"/>
-                            <constraint firstItem="1z0-Cd-hSw" firstAttribute="centerX" secondItem="jP3-Kg-42F" secondAttribute="centerX" id="N4E-sK-Nte"/>
-                            <constraint firstItem="1z0-Cd-hSw" firstAttribute="top" secondItem="Cpe-0M-N2X" secondAttribute="bottom" constant="45" id="XdX-Xq-JP0"/>
                             <constraint firstItem="f4q-xp-dID" firstAttribute="centerY" secondItem="jP3-Kg-42F" secondAttribute="centerY" id="arR-2b-PaR"/>
-                            <constraint firstItem="gje-YN-wTz" firstAttribute="centerX" secondItem="jP3-Kg-42F" secondAttribute="centerX" id="reG-LF-wpo"/>
+                            <constraint firstItem="Off-gE-rw2" firstAttribute="top" secondItem="7o1-bk-vb3" secondAttribute="bottom" constant="59" id="gSE-9w-0Lk"/>
+                            <constraint firstItem="3r2-oE-BW2" firstAttribute="centerX" secondItem="jP3-Kg-42F" secondAttribute="centerX" id="gxX-kR-lTV"/>
+                            <constraint firstItem="3r2-oE-BW2" firstAttribute="top" secondItem="Cpe-0M-N2X" secondAttribute="bottom" constant="47" id="rVC-fV-Sxk"/>
+                            <constraint firstItem="7o1-bk-vb3" firstAttribute="centerX" secondItem="jP3-Kg-42F" secondAttribute="centerX" id="thY-vF-LVs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="計時" id="Xm0-UV-O8p" userLabel="計時"/>
