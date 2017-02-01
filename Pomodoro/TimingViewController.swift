@@ -30,12 +30,12 @@ class TimingViewController: UIViewController {
         switch status {
         case "nothing":
             model.working()
-            status = "working"
+            status = statusEnum.working.rawValue
             startButton.setTitle("取消", for: .normal)
         case "working":
             if Int(model.minute)! <= 9 {
                 model.cancel()
-                status = "nothing"
+                status = statusEnum.nothing.rawValue
                 startButton.setTitle("開始", for: .normal)
             }
             else {
