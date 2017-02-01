@@ -36,12 +36,15 @@ class TimingViewController: UIViewController {
             if Int(model.minute)! <= 9 {
                 model.cancel()
                 status = "nothing"
+                startButton.setTitle("開始", for: .normal)
             }
             else {
                 model.rest()
+                startButton.setTitle("跳過休息開始工作", for: .normal)
             }
         case "rest":
             model.skipRestToWork()
+            startButton.setTitle("跳過休息開始工作", for: .normal)
         default: break
         }
     }
