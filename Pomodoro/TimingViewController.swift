@@ -15,16 +15,6 @@ class TimingViewController: UIViewController {
     
     let model = TimingModel()
     let userPrefence = UserDefaults.standard
-
-    var status: String {
-        get {
-            return userPrefence.value(forKey: "status") as! String
-        }
-        
-        set {
-            userPrefence.set(newValue, forKey: "status")
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +25,7 @@ class TimingViewController: UIViewController {
         updateTimeLabel()
     }
     
-    private func updateTimeLabel() {
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"updateTimeLabel"), object:nil, queue:nil) {_ in
-            self.minuteLabel.text = self.model.minute
-            self.secondLabel.text = self.model.second
-        }
-    }
-    
-    @IBAction func buttonClick(_ sender: UIButton) {
-        print("\(status)")
-        
+    @IBAction func buttonClick(_ sender: UIButton) {        
         switch status {
         case "nothing":
             model.working()
@@ -62,5 +43,36 @@ class TimingViewController: UIViewController {
             model.skipRestToWork()
         default: break
         }
+    }
+    
+    //MARK: - NotificationCenter
+    private func updateTimeLabel() {
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"updateTimeLabel"), object:nil, queue:nil) {_ in
+            self.minuteLabel.text = self.model.minute
+            self.secondLabel.text = self.model.second
+        }
+    }
+    
+    private func changeButtonTitle() {
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"changeButtonTitle"), object:nil, queue:nil) {_ in
+            self.startButton.titleLabel?.text = ""
+        }
+    }
+    
+    //MARK: - Custom Properties
+    private var status: String {
+        get {
+            return userPrefence.value(forKey: "status") as! String
+        }
+        
+        set {
+            userPrefence.set(newValue, forKey: "status")
+        }
+    }
+    
+    private enum statusEnum : String {
+        case nothing = "nothing"
+        case working = "working"
+        case rest = "rest"
     }
 }
