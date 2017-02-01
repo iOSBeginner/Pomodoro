@@ -19,9 +19,10 @@ class TimingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if userPrefence.value(forKey: "status") == nil {
-            userPrefence.set("nothing", forKey: "status")
-        }
+        #if DEBUG
+            status = statusEnum.nothing.rawValue
+        #endif
+        
         updateTimeLabel()
     }
     
