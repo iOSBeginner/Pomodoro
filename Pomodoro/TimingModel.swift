@@ -47,6 +47,10 @@ class TimingModel {
     @objc private func count() {
         remainTime = remainTime! + 1
         notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
+        
+        if remainTime == 10 * 60 {
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "提早完成開始休息")
+        }
     }
         
     }
