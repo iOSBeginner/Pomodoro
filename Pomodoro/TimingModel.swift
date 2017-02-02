@@ -57,6 +57,10 @@ class TimingModel {
         remainTime = remainTime! - 1
         notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
         
+        if remainTime == 0 {
+            timer?.invalidate()
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始")
+        }
     }
     
     //MARK: - private function
