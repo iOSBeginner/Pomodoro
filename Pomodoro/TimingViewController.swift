@@ -23,7 +23,7 @@ class TimingViewController: UIViewController {
             status = statusEnum.nothing.rawValue
         #endif
         
-        registeObserver()
+        registerObserver()
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {        
@@ -48,7 +48,7 @@ class TimingViewController: UIViewController {
     }
     
     //MARK: - NotificationCenter
-    private func registeObserver() {
+    private func registerObserver() {
         updateTimeLabel()
         changeButtonTitle()
     }
