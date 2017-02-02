@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -57,6 +58,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userPrefence.value(forKey: "status") == nil {
             userPrefence.set("nothing", forKey: "status")
         }
+
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        userNotificationCenter.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {(grant, error) in
+            if !grant {
+                print("\(error)")
+            }
+        })
     }
 
     // MARK: - Core Data stack
