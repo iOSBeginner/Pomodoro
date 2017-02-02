@@ -42,6 +42,12 @@ class TimingModel {
         working()
     }
     
+    // MARK: - Timer Method
+    
+    @objc private func count() {
+        remainTime = remainTime! + 1
+        notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
+    }
         
     }
     
