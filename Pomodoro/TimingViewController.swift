@@ -23,7 +23,7 @@ class TimingViewController: UIViewController {
             status = statusEnum.nothing.rawValue
         #endif
         
-        updateTimeLabel()
+        registeObserver()
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {        
@@ -50,6 +50,11 @@ class TimingViewController: UIViewController {
     }
     
     //MARK: - NotificationCenter
+    private func registeObserver() {
+        updateTimeLabel()
+        changeButtonTitle()
+    }
+    
     private func updateTimeLabel() {
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"updateTimeLabel"), object:nil, queue:nil) {_ in
             self.minuteLabel.text = self.model.minute
