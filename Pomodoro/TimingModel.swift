@@ -60,6 +60,7 @@ class TimingModel {
         if remainTime == 0 {
             timer?.invalidate()
             notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始")
+            status = statusEnum.nothing.rawValue
         }
     }
     
