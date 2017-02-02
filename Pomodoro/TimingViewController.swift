@@ -40,10 +40,12 @@ class TimingViewController: UIViewController {
             }
             else {
                 model.rest()
+                status = statusEnum.rest.rawValue
                 startButton.setTitle("跳過休息開始工作", for: .normal)
             }
         case "rest":
             model.skipRestToWork()
+            status = statusEnum.working.rawValue
             startButton.setTitle("跳過休息開始工作", for: .normal)
         default: break
         }
