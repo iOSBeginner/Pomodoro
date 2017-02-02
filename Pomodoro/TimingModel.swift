@@ -22,7 +22,8 @@ class TimingModel {
     func working() {
         getOneUnitWorkTime()
         remainTime = 0
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
     }
     
     func cancel() {
