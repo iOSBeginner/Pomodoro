@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class TimingModel {
     private var timer : Timer?
@@ -22,10 +23,12 @@ class TimingModel {
     func working() {
         status = statusEnum.working.rawValue
         
-        getOneUnitWorkTime()
+        let workTime = getOneUnitWorkTime()
         remainTime = 0
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
+        
+        setLocalNotification(title: "休息一下吧！", body: "你工作 \(workTime/60) 分鐘了", fireTime: workTime)
     }
     
     func cancel() {
@@ -42,6 +45,8 @@ class TimingModel {
         remainTime = getOneUnitRestTime()
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        
+        setLocalNotification(title: "該工作囉！",body: "休息時間結束", fireTime: getOneUnitRestTime())
     }
     
     func skipRestToWork() {
@@ -73,14 +78,35 @@ class TimingModel {
         }
     }
     
+    // Mark: - LocalNotification
+    
+    private func setLocalNotification(title: String, body: String, fireTime: Int) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(fireTime), repeats: false)
+        let requestIdentifier = "restTime"
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+            if let error = error {
+                print("\(error)")
+            }
+        })
+    }
+    
     //MARK: - private function
-    private func getOneUnitWorkTime() {
+    private func getOneUnitWorkTime() -> Int {
         let now = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH"
         let hour = Int(dateFormatter.string(from: now))
         
         workTime = hour! <= 12 ? 90*60 : 25*60;
+        
+        return workTime
     }
     
     private func getOneUnitRestTime() -> Int {
