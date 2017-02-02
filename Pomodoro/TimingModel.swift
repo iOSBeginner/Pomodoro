@@ -39,6 +39,9 @@ class TimingModel {
     }
     
     func skipRestToWork() {
+        working()
+    }
+    
         
     }
     
