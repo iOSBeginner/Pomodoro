@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D2999671E431447002619FC /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2999661E431446002619FC /* Status.swift */; };
 		1D2FA8BB1E1CF76B00BB848B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FA8BA1E1CF76B00BB848B /* AppDelegate.swift */; };
 		1D2FA8C01E1CF76B00BB848B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D2FA8BE1E1CF76B00BB848B /* Main.storyboard */; };
 		1D2FA8C31E1CF76B00BB848B /* Pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FA8C11E1CF76B00BB848B /* Pomodoro.xcdatamodeld */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D2999661E431446002619FC /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		1D2FA8B71E1CF76B00BB848B /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D2FA8BA1E1CF76B00BB848B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D2FA8BF1E1CF76B00BB848B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				1D2FA8BA1E1CF76B00BB848B /* AppDelegate.swift */,
 				1D2FA8F11E1CFCEE00BB848B /* TimingViewController.swift */,
 				1DAEC2DC1E38D78600B0270A /* TimingModel.swift */,
+				1D2999661E431446002619FC /* Status.swift */,
 				1D2FA8EB1E1CFA2800BB848B /* ChartViewController.swift */,
 				1D2FA8EF1E1CFAE600BB848B /* SettingTableViewController.swift */,
 				1D2FA8BE1E1CF76B00BB848B /* Main.storyboard */,
@@ -276,6 +279,7 @@
 			files = (
 				1D2FA8C31E1CF76B00BB848B /* Pomodoro.xcdatamodeld in Sources */,
 				1DAEC2DD1E38D78600B0270A /* TimingModel.swift in Sources */,
+				1D2999671E431447002619FC /* Status.swift in Sources */,
 				1D2FA8F31E1CFCEE00BB848B /* TimingViewController.swift in Sources */,
 				1D2FA8ED1E1CFA2800BB848B /* ChartViewController.swift in Sources */,
 				1D2FA8BB1E1CF76B00BB848B /* AppDelegate.swift in Sources */,

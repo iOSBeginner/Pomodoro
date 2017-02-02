@@ -69,21 +69,4 @@ class TimingViewController: UIViewController {
             self.startButton.setTitle(notification.object as! String?, for: .normal)
         }
     }
-    
-    //MARK: - Custom Properties
-    private var status: String {
-        get {
-            return userPrefence.value(forKey: "status") as! String
-        }
-        
-        set {
-            userPrefence.set(newValue, forKey: "status")
-        }
-    }
-    
-    private enum statusEnum : String {
-        case nothing = "nothing"
-        case working = "working"
-        case rest = "rest"
-    }
 }
