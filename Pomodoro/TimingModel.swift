@@ -27,7 +27,8 @@ class TimingModel {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
         
-        setLocalNotification(title: "休息一下吧！", body: "你工作 \(workTime/60) 分鐘了", fireTime: workTime)
+        cancelLocalNotification(identifier: "rest")
+        setLocalNotification(title: "休息一下吧！", body: "你工作 \(workTime/60) 分鐘了", fireTime: workTime, identifier: "work")
     }
     
     func cancel() {
@@ -36,6 +37,8 @@ class TimingModel {
         timer?.invalidate()
         remainTime = 0
         notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
+        
+        cancelLocalNotification(identifier: "work")
     }
     
     func rest() {
@@ -45,7 +48,8 @@ class TimingModel {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
         
-        setLocalNotification(title: "該工作囉！",body: "休息時間結束", fireTime: getOneUnitRestTime())
+        cancelLocalNotification(identifier: "work")
+        setLocalNotification(title: "該工作囉！",body: "休息時間結束", fireTime: getOneUnitRestTime(), identifier: "rest")
     }
     
     func skipRestToWork() {
@@ -79,21 +83,24 @@ class TimingModel {
     
     // Mark: - LocalNotification
     
-    private func setLocalNotification(title: String, body: String, fireTime: Int) {
+    private func setLocalNotification(title: String, body: String, fireTime: Int, identifier: String) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(fireTime), repeats: false)
-        let requestIdentifier = "restTime"
-        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
             if let error = error {
                 print("\(error)")
             }
         })
+    }
+    
+    private func cancelLocalNotification(identifier: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
     }
     
     //MARK: - private function
