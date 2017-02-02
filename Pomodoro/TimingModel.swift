@@ -28,6 +28,8 @@ class TimingModel {
     
     func cancel() {
         timer?.invalidate()
+        remainTime = 0
+        notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
     }
     
     func rest() {
