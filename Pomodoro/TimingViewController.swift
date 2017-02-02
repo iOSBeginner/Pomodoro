@@ -65,8 +65,8 @@ class TimingViewController: UIViewController {
     }
     
     private func changeButtonTitle() {
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"changeButtonTitle"), object:nil, queue:nil) {_ in
-            self.startButton.titleLabel?.text = ""
+        NotificationCenter.default.addObserver(forName: Notification.Name("changeButtonTitle"), object:nil, queue:nil) {notification in
+            self.startButton.setTitle(notification.object as! String?, for: .normal)
         }
     }
     
