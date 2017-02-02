@@ -20,6 +20,8 @@ class TimingModel {
 
     //MARK: - public function
     func working() {
+        status = statusEnum.working.rawValue
+        
         getOneUnitWorkTime()
         remainTime = 0
         timer?.invalidate()
@@ -27,12 +29,16 @@ class TimingModel {
     }
     
     func cancel() {
+        status = statusEnum.nothing.rawValue
+        
         timer?.invalidate()
         remainTime = 0
         notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
     }
     
     func rest() {
+        status = statusEnum.rest.rawValue
+        
         remainTime = getOneUnitRestTime()
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
