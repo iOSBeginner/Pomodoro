@@ -17,8 +17,7 @@ class TimingModel {
     private var remainTime : Int! = 0
     
     private let notificationCenter = NotificationCenter.default
-    private let userPrefence = UserDefaults.standard
-
+    
     //MARK: - public function
     func working() {
         status = statusEnum.working.rawValue
