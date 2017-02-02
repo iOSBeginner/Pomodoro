@@ -52,6 +52,10 @@ class TimingModel {
             notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "提早完成開始休息")
         }
     }
+    
+    @objc private func countDown() {
+        remainTime = remainTime! - 1
+        notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
         
     }
     
