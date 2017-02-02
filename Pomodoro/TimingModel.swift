@@ -57,6 +57,9 @@ class TimingModel {
         if remainTime == 10 * 60 {
             notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "提早完成開始休息")
         }
+        else if remainTime == workTime {
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始休息")
+        }
     }
     
     @objc private func countDown() {
