@@ -54,7 +54,7 @@ class TimingViewController: UIViewController {
     }
     
     private func updateTimeLabel() {
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"updateTimeLabel"), object:nil, queue:nil) {_ in
+        NotificationCenter.default.addObserver(forName: Notification.Name("updateTimeLabel"), object:nil, queue:nil) {_ in
             self.minuteLabel.text = self.model.minute
             self.secondLabel.text = self.model.second
         }
