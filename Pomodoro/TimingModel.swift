@@ -34,6 +34,8 @@ class TimingModel {
     
     func rest() {
         remainTime = getOneUnitRestTime()
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
     }
     
     func skipRestToWork() {
