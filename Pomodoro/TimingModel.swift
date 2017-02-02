@@ -9,18 +9,15 @@
 import Foundation
 
 class TimingModel {
-    // MARK: - Timer
     private var timer : Timer?
     
     private var workTime : Int! = 300
     private var restTime : Int! = 900
     private var remainTime : Int! = 0
     
-    @objc private func countDown() {
-        remainTime = remainTime! + 1
-        NotificationCenter.default.post(name: Notification.Name("updateTimeLabel"), object: nil)
-    }
-    
+    private let notificationCenter = NotificationCenter.default
+    private let userPrefence = UserDefaults.standard
+
     //MARK: - public function
     func working() {
         getOneUnitWorkTime()
