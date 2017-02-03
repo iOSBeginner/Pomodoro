@@ -19,10 +19,6 @@ class TimingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        #if DEBUG
-            status = statusEnum.nothing.rawValue
-        #endif
-        
         registerObserver()
     }
     
