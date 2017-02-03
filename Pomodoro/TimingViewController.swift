@@ -20,6 +20,7 @@ class TimingViewController: UIViewController {
         super.viewDidLoad()
         
         registerObserver()
+        model.restartCounting()
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {        
@@ -43,6 +44,7 @@ class TimingViewController: UIViewController {
     private func registerObserver() {
         updateTimeLabel()
         changeButtonTitle()
+        restartContingObserver()
     }
     
     private func updateTimeLabel() {
@@ -55,6 +57,12 @@ class TimingViewController: UIViewController {
     private func changeButtonTitle() {
         NotificationCenter.default.addObserver(forName: Notification.Name("changeButtonTitle"), object:nil, queue:nil) {notification in
             self.startButton.setTitle(notification.object as! String?, for: .normal)
+        }
+    }
+    
+    private func restartContingObserver() {
+        NotificationCenter.default.addObserver(forName: Notification.Name("restartCounting"), object:nil, queue:nil) {_ in
+            self.model.restartCounting()
         }
     }
 }

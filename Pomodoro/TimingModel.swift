@@ -17,12 +17,14 @@ class TimingModel {
     private var remainTime : Int! = 0
     
     private let notificationCenter = NotificationCenter.default
+    private let userPrefence = UserDefaults.standard
     
     //MARK: - public function
     func working() {
         status = statusEnum.working.rawValue
         
         let workTime = getOneUnitWorkTime()
+        userPrefence.set(Date(), forKey: "StartCountingTime")
         remainTime = 0
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
@@ -50,6 +52,7 @@ class TimingModel {
         remainTime = getOneUnitRestTime()
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        userPrefence.set(Date(), forKey: "StartCountingTime")
         
         cancelLocalNotification(identifier: "work")
         setLocalNotification(title: "該工作囉！",body: "休息時間結束", fireTime: getOneUnitRestTime(), identifier: "rest")
@@ -59,6 +62,58 @@ class TimingModel {
     
     func skipRestToWork() {
         working()
+    }
+    
+    // MARK: - Restart
+    
+    func restartCounting() {
+        switch status {
+        case "nothing":
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始工作")
+        case "working":
+            reWork()
+        case "rest":
+            reRest()
+        default: break
+        }
+    }
+    
+    private func reWork() {
+        let startDate = userPrefence.value(forKey: "StartCountingTime") as! Date
+        workTime = getOneUnitWorkTime(date: startDate)
+        
+        let now = Date()
+        let timeInterval = now.timeIntervalSince(startDate)
+        remainTime = Int(timeInterval)
+        if remainTime < 10 * 60 {
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "取消")
+        }
+        else if remainTime > 10 * 60 && remainTime < workTime {
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "提早完成開始休息")
+        }
+        else if remainTime > workTime {
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始休息")
+        }
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
+    }
+    
+    private func reRest() {
+        let startCountingTime = userPrefence.value(forKey: "StartCountingTime") as! Date
+        let now = Date()
+        let timeInterval = now.timeIntervalSince(startCountingTime)
+        let restTime = getOneUnitRestTime()
+        
+        remainTime = restTime - Int(timeInterval)
+        if remainTime > 0 {
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "跳過休息開始工作")
+        } else {
+            status = statusEnum.nothing.rawValue
+            notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始工作")
+        }
     }
     
     // MARK: - Timer Method
@@ -109,11 +164,10 @@ class TimingModel {
     }
     
     //MARK: - private function
-    private func getOneUnitWorkTime() -> Int {
-        let now = Date()
+    private func getOneUnitWorkTime(date: Date) -> Int {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH"
-        let hour = Int(dateFormatter.string(from: now))
+        let hour = Int(dateFormatter.string(from: date))
         
         workTime = hour! <= 12 ? 90*60 : 25*60;
         
