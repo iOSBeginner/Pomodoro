@@ -40,9 +40,10 @@ class TimingModel {
         
         timer?.invalidate()
         remainTime = 0
-        notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
         
         cancelLocalNotification(identifier: "work")
+        
+        notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
         notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始工作")
     }
     
