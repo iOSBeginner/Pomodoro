@@ -8,10 +8,6 @@
 
 import Foundation
 
-class Status {
-    
-}
-
 var status: String {
     get {
         return UserDefaults.standard.value(forKey: "status") as! String
