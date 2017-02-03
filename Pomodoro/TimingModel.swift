@@ -23,7 +23,7 @@ class TimingModel {
     func working() {
         status = statusEnum.working.rawValue
         
-        let workTime = getOneUnitWorkTime()
+        let workTime = getOneUnitWorkTime(date: Date())
         userPrefence.set(Date(), forKey: "StartCountingTime")
         remainTime = 0
         timer?.invalidate()
