@@ -13,8 +13,8 @@ class TimingViewController: UIViewController {
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
-    let model = TimingModel()
-    let userPrefence = UserDefaults.standard
+    private let model = TimingModel()
+    private let userPrefence = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
