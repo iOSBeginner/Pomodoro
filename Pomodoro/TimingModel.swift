@@ -112,6 +112,7 @@ class TimingModel {
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
             notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "跳過休息開始工作")
         } else {
+            timer?.invalidate()
             status = statusEnum.nothing.rawValue
             notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始工作")
         }
