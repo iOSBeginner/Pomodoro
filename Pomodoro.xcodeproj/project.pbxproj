@@ -18,6 +18,7 @@
 		1D2FA8ED1E1CFA2800BB848B /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FA8EB1E1CFA2800BB848B /* ChartViewController.swift */; };
 		1D2FA8F01E1CFAE600BB848B /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FA8EF1E1CFAE600BB848B /* SettingTableViewController.swift */; };
 		1D2FA8F31E1CFCEE00BB848B /* TimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2FA8F11E1CFCEE00BB848B /* TimingViewController.swift */; };
+		1D6AF8221E45852800824174 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6AF8211E45852800824174 /* CoreDataModel.swift */; };
 		1DAEC2DD1E38D78600B0270A /* TimingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAEC2DC1E38D78600B0270A /* TimingModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		1D2FA8EB1E1CFA2800BB848B /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		1D2FA8EF1E1CFAE600BB848B /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		1D2FA8F11E1CFCEE00BB848B /* TimingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingViewController.swift; sourceTree = "<group>"; };
+		1D6AF8211E45852800824174 /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		1DAEC2DC1E38D78600B0270A /* TimingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				1D2FA8F11E1CFCEE00BB848B /* TimingViewController.swift */,
 				1DAEC2DC1E38D78600B0270A /* TimingModel.swift */,
 				1D2999661E431446002619FC /* Status.swift */,
+				1D6AF8211E45852800824174 /* CoreDataModel.swift */,
 				1D2FA8EB1E1CFA2800BB848B /* ChartViewController.swift */,
 				1D2FA8EF1E1CFAE600BB848B /* SettingTableViewController.swift */,
 				1D2FA8BE1E1CF76B00BB848B /* Main.storyboard */,
@@ -279,6 +282,7 @@
 			files = (
 				1D2FA8C31E1CF76B00BB848B /* Pomodoro.xcdatamodeld in Sources */,
 				1DAEC2DD1E38D78600B0270A /* TimingModel.swift in Sources */,
+				1D6AF8221E45852800824174 /* CoreDataModel.swift in Sources */,
 				1D2999671E431447002619FC /* Status.swift in Sources */,
 				1D2FA8F31E1CFCEE00BB848B /* TimingViewController.swift in Sources */,
 				1D2FA8ED1E1CFA2800BB848B /* ChartViewController.swift in Sources */,
