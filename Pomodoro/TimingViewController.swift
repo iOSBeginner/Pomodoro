@@ -12,6 +12,7 @@ class TimingViewController: UIViewController {
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var workHourLabel: UILabel!
     
     private let model = TimingModel()
     private let userPrefence = UserDefaults.standard
@@ -21,6 +22,13 @@ class TimingViewController: UIViewController {
         
         registerObserver()
         model.restartCounting()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let workTime = CoreDataModel.readWorkTime()
+        workHourLabel.text = "\(workTime / 60):\(workTime % 60)"
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {        
