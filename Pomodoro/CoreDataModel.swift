@@ -109,28 +109,26 @@ class CoreDataModel {
         }
     }
     
-    class func readAllWorkTime() -> Int {
+    class func getAllWorkTimeData() -> [WorkTime]? {
         let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
-        
+        var workData: [WorkTime] = []
+
         do {
             let context = getContext()
             let fetchResult = try context.fetch(fetchRequest)
-            var totalWorkTime: TimeInterval = 0
             
             for oneWorkUnit in fetchResult as [WorkTime] {
                 guard oneWorkUnit.value(forKey: "endTime") != nil else {
                     continue
                 }
                 
-                let startTime = oneWorkUnit.startTime as! Date
-                let endTime = oneWorkUnit.endTime as! Date
-                totalWorkTime = totalWorkTime + endTime.timeIntervalSince(startTime)
+                workData.append(oneWorkUnit)
             }
             
-            return Int(totalWorkTime)
+            return workData
         } catch {
             print(error.localizedDescription)
-            return 0
+            return workData
         }
     }
 }
