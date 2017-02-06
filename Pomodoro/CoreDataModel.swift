@@ -74,8 +74,18 @@ class CoreDataModel {
         }
     }
     
-    class func readWorkTime() -> Int {
+    class func readTodayWorkTime() -> Int {
         let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
+        
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+        components.hour = 00
+        components.minute = 00
+        components.second = 00
+        let today = calendar.date(from: components)!
+        
+        let predicate: NSPredicate? = NSPredicate(format: "startTime >= %@", argumentArray: [today])
+        fetchRequest.predicate = predicate
         
         do {
             let context = getContext()
