@@ -142,16 +142,16 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3r2-oE-BW2">
-                                <rect key="frame" x="123" y="67" width="129" height="20.5"/>
+                                <rect key="frame" x="114.5" y="67" width="146" height="20.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天完成：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSV-ZQ-sq5">
-                                        <rect key="frame" x="0.0" y="0.0" width="87" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天工作了：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSV-ZQ-sq5">
+                                        <rect key="frame" x="0.0" y="0.0" width="104" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNG-t1-Fag">
-                                        <rect key="frame" x="87" y="0.0" width="42" height="20.5"/>
+                                        <rect key="frame" x="104" y="0.0" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -174,6 +174,7 @@
                         <outlet property="minuteLabel" destination="bED-mA-sav" id="tda-NW-8Nb"/>
                         <outlet property="secondLabel" destination="X5E-k9-WyZ" id="WhL-0h-CMp"/>
                         <outlet property="startButton" destination="7o1-bk-vb3" id="qvf-fQ-YQa"/>
+                        <outlet property="workHourLabel" destination="XNG-t1-Fag" id="VJP-5l-X7n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRF-tI-yzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
