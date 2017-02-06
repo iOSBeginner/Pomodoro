@@ -27,7 +27,7 @@ class TimingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let workTime = CoreDataModel.readWorkTime()
+        let workTime = CoreDataModel.readTodayWorkTime()
         workHourLabel.text = "\(workTime / 60):\(workTime % 60)"
     }
     
@@ -41,6 +41,8 @@ class TimingViewController: UIViewController {
             }
             else {
                 model.rest()
+                let workTime = CoreDataModel.readTodayWorkTime()
+                workHourLabel.text = "\(workTime / 60):\(workTime % 60)"
             }
         case "rest":
             model.skipRestToWork()
