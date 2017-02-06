@@ -98,4 +98,29 @@ class CoreDataModel {
             return 0
         }
     }
+    
+    class func readAllWorkTime() -> Int {
+        let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
+        
+        do {
+            let context = getContext()
+            let fetchResult = try context.fetch(fetchRequest)
+            var totalWorkTime: TimeInterval = 0
+            
+            for oneWorkUnit in fetchResult as [WorkTime] {
+                guard oneWorkUnit.value(forKey: "endTime") != nil else {
+                    continue
+                }
+                
+                let startTime = oneWorkUnit.startTime as! Date
+                let endTime = oneWorkUnit.endTime as! Date
+                totalWorkTime = totalWorkTime + endTime.timeIntervalSince(startTime)
+            }
+            
+            return Int(totalWorkTime)
+        } catch {
+            print(error.localizedDescription)
+            return 0
+        }
+    }
 }
