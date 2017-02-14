@@ -115,8 +115,10 @@ class TimingModel {
             notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "跳過休息開始工作")
         } else {
             timer?.invalidate()
+            remainTime = 0
             status = statusEnum.nothing.rawValue
             notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始工作")
+            notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
         }
     }
     
