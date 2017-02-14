@@ -9,7 +9,7 @@
 import UIKit
 
 class HistoryTableViewController: UITableViewController {
-    private var workData: [WorkTime]?
+    private var workData: [WorkTime] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +42,13 @@ class HistoryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (workData?.count)!
+        return workData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let oneWorkUnit = workData![indexPath.row]
+        let oneWorkUnit = workData[indexPath.row]
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"

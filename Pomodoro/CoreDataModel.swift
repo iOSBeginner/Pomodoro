@@ -69,7 +69,7 @@ class CoreDataModel {
         }
     }
     
-    class func getAllWorkTimeData() -> [WorkTime]? {
+    class func getAllWorkTimeData() -> [WorkTime] {
         let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
         var workData: [WorkTime] = []
 
@@ -78,10 +78,6 @@ class CoreDataModel {
             let fetchResult = try context.fetch(fetchRequest)
             
             for oneWorkUnit in fetchResult as [WorkTime] {
-                guard oneWorkUnit.value(forKey: "endTime") != nil else {
-                    continue
-                }
-                
                 workData.append(oneWorkUnit)
             }
             
