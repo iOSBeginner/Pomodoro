@@ -44,7 +44,7 @@ class CoreDataModel {
         components.second = 00
         let today = calendar.date(from: components)!
         
-        let predicate: NSPredicate? = NSPredicate(format: "startTime >= %@", argumentArray: [today])
+        let predicate = NSPredicate(format: "startTime >= %@", argumentArray: [today])
         fetchRequest.predicate = predicate
         
         do {
