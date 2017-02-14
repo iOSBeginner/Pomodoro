@@ -67,18 +67,6 @@ class TimingModel {
         working()
     }
     
-    // MARK: -
-    
-    private func calculateRestTime() {
-        
-    }
-    
-    // MARK: -
-    
-    private func saveRestTime() {
-        
-    }
-    
     // MARK: - Restart
     
     func restartCounting() {
