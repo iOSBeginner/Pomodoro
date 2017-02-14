@@ -21,10 +21,18 @@ class HistoryTableViewController: UITableViewController {
         
         workData = CoreDataModel.getAllWorkTimeData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let q = DispatchQueue.init(label: "getAllWorkTimeData", qos: .userInteractive)
+        q.async {
+            let newWorkData = CoreDataModel.getAllWorkTimeData()
+            if newWorkData != self.workData {
+                self.workData = newWorkData
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
