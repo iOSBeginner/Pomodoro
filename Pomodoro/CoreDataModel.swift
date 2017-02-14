@@ -18,58 +18,18 @@ class CoreDataModel {
     
     // MARK: - Public Method
     
-    class func saveStartTime() {
+    class func saveWorkRecord() {
         let context = getContext()
         let entity = NSEntityDescription.entity(forEntityName: "WorkTime", in: context)
         
         let managedObj = NSManagedObject(entity: entity!, insertInto: context)
-        managedObj.setValue(Date(), forKey: "startTime")
-        
+        let startTime = UserDefaults.standard.value(forKey: "StartCountingTime") as! Date
+        managedObj.setValue(startTime, forKey: "startTime")
+        managedObj.setValue(Date(), forKey: "endTime")
+
         do {
             try context.save()
         } catch  {
-            print(error.localizedDescription)
-        }
-    }
-    
-    class func saveEndTime() {
-        let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
-        
-        do {
-            let context = getContext()
-            let fetchResult = try context.fetch(fetchRequest)
-            
-            for oneWorkUnit in fetchResult as [NSManagedObject] {
-                if oneWorkUnit.value(forKey: "endTime") == nil {
-                    oneWorkUnit.setValue(Date(), forKey: "endTime")
-                    do {
-                        try context.save()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                    
-                    break
-                }
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    class func deleteCurrentWork() {
-        let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
-        
-        do {
-            let context = getContext()
-            let fetchResult = try context.fetch(fetchRequest)
-            
-            for oneWorkUnit in fetchResult as [NSManagedObject] {
-                if oneWorkUnit.value(forKey: "endTime") == nil {
-                    context.delete(oneWorkUnit)                    
-                    break
-                }
-            }
-        } catch {
             print(error.localizedDescription)
         }
     }

@@ -33,8 +33,6 @@ class TimingModel {
         setLocalNotification(title: "休息一下吧！", body: "你工作 \(workTime/60) 分鐘了", fireTime: workTime, identifier: "work")
         
         notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "取消")
-        
-        CoreDataModel.saveStartTime()
     }
     
     func cancel() {
@@ -47,11 +45,11 @@ class TimingModel {
         
         notificationCenter.post(name: Notification.Name("updateTimeLabel"), object: nil)
         notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "開始工作")
-        
-        CoreDataModel.deleteCurrentWork()
     }
     
     func rest() {
+        CoreDataModel.saveWorkRecord()
+        
         status = statusEnum.rest.rawValue
         
         remainTime = getOneUnitRestTime()
@@ -63,8 +61,6 @@ class TimingModel {
         setLocalNotification(title: "該工作囉！",body: "休息時間結束", fireTime: getOneUnitRestTime(), identifier: "rest")
         
         notificationCenter.post(name: Notification.Name("changeButtonTitle"), object: "跳過休息開始工作")
-        
-        CoreDataModel.saveEndTime()
     }
     
     func skipRestToWork() {
