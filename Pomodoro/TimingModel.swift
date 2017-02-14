@@ -179,7 +179,12 @@ class TimingModel {
     }
     
     private func getOneUnitRestTime() -> Int {
-        return 60 * 5
+        if getOneUnitWorkTime(date: userPrefence.value(forKey: "StartCountingTime") as! Date) == 25 * 60 {
+            return 5 * 60
+        }
+        else {  // if workTime == 90
+            return 20 * 60
+        }
     }
     
     // MARK: - Output
