@@ -34,13 +34,13 @@ class HistoryTableViewController: UITableViewController {
             }
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workData.count
     }
@@ -54,7 +54,7 @@ class HistoryTableViewController: UITableViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         let startTimeString = dateFormatter.string(from: oneWorkUnit.startTime! as Date)
         let endTimeString = dateFormatter.string(from: oneWorkUnit.endTime! as Date)
-
+        
         cell.textLabel?.text = "\(startTimeString) ~ \(endTimeString)"
         return cell
     }
@@ -79,5 +79,4 @@ class HistoryTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
