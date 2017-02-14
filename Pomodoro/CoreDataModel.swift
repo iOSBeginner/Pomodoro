@@ -131,4 +131,22 @@ class CoreDataModel {
             return workData
         }
     }
+    
+    class func deleteWorkRecord(row: Int) {
+        let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
+        
+        do {
+            let context = getContext()
+            let fetchResult = try context.fetch(fetchRequest)
+            context.delete(fetchResult[row])
+            
+            do {
+                try context.save()
+            } catch {
+                
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
