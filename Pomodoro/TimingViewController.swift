@@ -28,7 +28,8 @@ class TimingViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let workTime = CoreDataModel.readTodayWorkTime()
-        workHourLabel.text = "\(workTime / 60):\(workTime % 60)"
+        
+        workHourLabel.text = "\(workTime / (60 * 60)) : \((workTime % (60 * 60)) / 60) : \(workTime % 60)"
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {        
