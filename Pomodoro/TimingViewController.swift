@@ -27,9 +27,7 @@ class TimingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let workTime = CoreDataModel.readTodayWorkTime()
-        
-        workHourLabel.text = "\(workTime / (60 * 60)) : \((workTime % (60 * 60)) / 60) : \(workTime % 60)"
+        displayTodayWorkTime()
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {        
@@ -42,13 +40,17 @@ class TimingViewController: UIViewController {
             }
             else {
                 model.rest()
-                let workTime = CoreDataModel.readTodayWorkTime()
-                workHourLabel.text = "\(workTime / 60):\(workTime % 60)"
+                displayTodayWorkTime()
             }
         case "rest":
             model.skipRestToWork()
         default: break
         }
+    }
+    
+    private func displayTodayWorkTime() {
+        let workTime = CoreDataModel.readTodayWorkTime()
+        workHourLabel.text = "\(workTime / (60 * 60)) : \((workTime % (60 * 60)) / 60) : \(workTime % 60)"
     }
     
     //MARK: - NotificationCenter
