@@ -53,10 +53,6 @@ class CoreDataModel {
             var totalWorkTime: TimeInterval = 0
             
             for oneWorkUnit in fetchResult as [NSManagedObject] {
-                guard oneWorkUnit.value(forKey: "endTime") != nil else {
-                    continue
-                }
-                
                 let startTime = oneWorkUnit.value(forKey: "startTime") as! Date
                 let endTime = oneWorkUnit.value(forKey: "endTime") as! Date
                 totalWorkTime = totalWorkTime + endTime.timeIntervalSince(startTime)
