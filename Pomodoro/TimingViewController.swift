@@ -17,6 +17,8 @@ class TimingViewController: UIViewController {
     private let model = TimingModel()
     private let userPrefence = UserDefaults.standard
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,8 @@ class TimingViewController: UIViewController {
         
         displayTodayWorkTime()
     }
+    
+    // MARK: - Private Method
     
     @IBAction func buttonClick(_ sender: UIButton) {        
         switch status {
