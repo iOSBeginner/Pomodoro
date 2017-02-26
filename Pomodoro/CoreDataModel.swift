@@ -70,7 +70,7 @@ class CoreDataModel {
         let sort = NSSortDescriptor(key: "startTime", ascending: false)
         fetchRequest.sortDescriptors = [sort]
         
-        var resultArray = [[WorkTime]]()
+        var resultArray: [[WorkTime]]?
         
         do {
             let context = getContext()
@@ -93,14 +93,14 @@ class CoreDataModel {
                     oneDayArray.append(oneWorkUnit)
                 }
                 else {
-                    resultArray.append(oneDayArray)
+                    resultArray = (resultArray ?? []) + [oneDayArray]
                     oneDayArray = [oneWorkUnit]  // 將新的資料存在 oneDayArray
                 }
                 
                 lastDate = toDate
             }
             
-            resultArray.append(oneDayArray)
+            resultArray = (resultArray ?? []) + [oneDayArray]
             return resultArray
         } catch {
             print(error.localizedDescription)
