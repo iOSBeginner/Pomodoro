@@ -59,6 +59,17 @@ class HistoryTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard (workData?.count)! > 0 && (workData?[section].count)! > 0 else {
+            return nil
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM/dd"
+        let date = dateFormatter.string(from: workData?[section][0].startTime as! Date)
+        return date
+    }
+    
     // MARK: - Delegation
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
