@@ -68,7 +68,13 @@ class HistoryTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy MM/dd EEE"
         let date = dateFormatter.string(from: workData?[section][0].startTime as! Date)
-        return date
+        
+        var totalWorkTime: TimeInterval = 0
+        for workUnit in workData![section] {
+            totalWorkTime += (workUnit.endTime?.timeIntervalSince(workUnit.startTime as! Date))!
+        }
+        
+        return date + " 工作時間：\(Int(totalWorkTime) / (60 * 60)) : \((Int(totalWorkTime) % (60 * 60)) / 60)"
     }
     
     // MARK: - Delegation
