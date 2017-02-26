@@ -66,7 +66,7 @@ class HistoryTableViewController: UITableViewController {
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM/dd"
+        dateFormatter.dateFormat = "yyyy MM/dd EEE"
         let date = dateFormatter.string(from: workData?[section][0].startTime as! Date)
         return date
     }
