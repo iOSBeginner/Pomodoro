@@ -9,7 +9,7 @@
 import UIKit
 
 class HistoryTableViewController: UITableViewController {
-    private var workData: [WorkTime] = []
+    private var workData: [[WorkTime]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,8 @@ class HistoryTableViewController: UITableViewController {
         let q = DispatchQueue.init(label: "getAllWorkTimeData", qos: .userInteractive)
         q.async {
             let newWorkData = CoreDataModel.getAllWorkTimeData()
-            if newWorkData != self.workData {
+            
+            if newWorkData?[0].count != self.workData?[0].count {
                 self.workData = newWorkData
                 self.tableView.reloadData()
             }
@@ -38,22 +39,22 @@ class HistoryTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return workData?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workData.count
+        return workData?[section].count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let oneWorkUnit = workData[indexPath.row]
+        let oneWorkUnit = workData?[indexPath.section][indexPath.row]
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let startTimeString = dateFormatter.string(from: oneWorkUnit.startTime! as Date)
-        let endTimeString = dateFormatter.string(from: oneWorkUnit.endTime! as Date)
+        dateFormatter.dateFormat = "HH:mm"
+        let startTimeString = dateFormatter.string(from: oneWorkUnit?.startTime! as! Date)
+        let endTimeString = dateFormatter.string(from: oneWorkUnit?.endTime! as! Date)
         
         cell.textLabel?.text = "\(startTimeString) ~ \(endTimeString)"
         return cell
@@ -74,10 +75,13 @@ class HistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            workData.remove(at: indexPath.row)
-            CoreDataModel.deleteWorkRecord(row: indexPath.row)
-            
+            CoreDataModel.deleteWorkRecord(date: workData?[indexPath.section][indexPath.row].startTime as! Date)
+            workData?[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            if (workData?[indexPath.section].count)! == 0 {
+                tableView.reloadData()
+            }
         }
     }
 

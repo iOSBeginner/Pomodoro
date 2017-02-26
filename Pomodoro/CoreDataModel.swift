@@ -65,32 +65,58 @@ class CoreDataModel {
         }
     }
     
-    class func getAllWorkTimeData() -> [WorkTime] {
+    class func getAllWorkTimeData() -> [[WorkTime]]? {
         let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
-        var workData: [WorkTime] = []
-
-        do {
-            let context = getContext()
-            let fetchResult = try context.fetch(fetchRequest)
-            
-            for oneWorkUnit in fetchResult as [WorkTime] {
-                workData.append(oneWorkUnit)
-            }
-            
-            return workData
-        } catch {
-            print(error.localizedDescription)
-            return workData
-        }
-    }
-    
-    class func deleteWorkRecord(row: Int) {
-        let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
+        let sort = NSSortDescriptor(key: "startTime", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        
+        var resultArray = [[WorkTime]]()
         
         do {
             let context = getContext()
             let fetchResult = try context.fetch(fetchRequest)
-            context.delete(fetchResult[row])
+            
+            guard fetchResult.count != 0 else {
+                return nil
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "D"
+            
+            var lastDate: Int?
+            var oneDayArray: [WorkTime] = []
+            
+            for oneWorkUnit in fetchResult as [WorkTime] {
+                let toDate = Int(dateFormatter.string(from: oneWorkUnit.startTime! as Date)) // 今天的日期
+                
+                if lastDate == nil || lastDate == toDate {  // 第一筆資料或是跟前一筆資料是同天
+                    oneDayArray.append(oneWorkUnit)
+                }
+                else {
+                    resultArray.append(oneDayArray)
+                    oneDayArray = [oneWorkUnit]  // 將新的資料存在 oneDayArray
+                }
+                
+                lastDate = toDate
+            }
+            
+            resultArray.append(oneDayArray)
+            return resultArray
+        } catch {
+            print(error.localizedDescription)
+            return resultArray
+        }
+    }
+    
+    class func deleteWorkRecord(date: Date) {
+        let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
+        let predicate = NSPredicate(format: "startTime == %@", argumentArray: [date])
+        fetchRequest.predicate = predicate
+        
+        do {
+            let context = getContext()
+            let fetchResult = try context.fetch(fetchRequest)
+            context.delete(fetchResult[0])
             
             do {
                 try context.save()
