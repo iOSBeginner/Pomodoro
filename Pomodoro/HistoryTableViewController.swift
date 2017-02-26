@@ -79,9 +79,7 @@ class HistoryTableViewController: UITableViewController {
             workData?[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-            if (workData?[indexPath.section].count)! == 0 {
-                tableView.reloadData()
-            }
+            tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
         }
     }
 
