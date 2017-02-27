@@ -9,6 +9,8 @@
 import XCTest
 @testable import Pomodoro
 
+import CoreData
+
 class PomodoroTests: XCTestCase {
     
     override func setUp() {
@@ -33,4 +35,25 @@ class PomodoroTests: XCTestCase {
         }
     }
     
+    func testGetAllWorkTimeData() {
+        let fetchRequest: NSFetchRequest<WorkTime> = WorkTime.fetchRequest()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        do {
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchResult = try context.fetch(fetchRequest)
+            
+            let workData = CoreDataModel.getAllWorkTimeData()
+            var dataCount = 0
+            if workData != nil {
+                for i in 0..<workData!.count {
+                    dataCount += workData![i].count
+                }
+            }
+            
+            XCTAssert(dataCount == fetchResult.count)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
